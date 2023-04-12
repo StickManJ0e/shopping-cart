@@ -1,9 +1,12 @@
 import React from "react";
-//import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Link } from "react-router-dom";
 
 const Header = () => {
     return (
-        <div>Header</div>
+        <header>
+            <Link to={'/'}>Home</Link>
+            <Link to={'/catalogue'}>Catalogue</Link>
+        </header>
     )
 }
 
