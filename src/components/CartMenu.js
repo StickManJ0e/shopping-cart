@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CartMenu = (props) => {
     const { openCart, setOpenCart, cartItems, setCartItems } = props;
     const [cartTotal, setCartTotal] = useState();
-    const [cartEmpty, setCartEmpty] = useState(<div>Your bag is empty</div>);
+    const [cartEmpty, setCartEmpty] = useState(<div id="cart-item-div">Your bag is empty</div>);
     const [cartButton, setCartButton] = useState(<div>Browse Products</div>);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const CartMenu = (props) => {
         }
 
         else {
-            setCartEmpty(<div>Your bag is empty</div>);
+            setCartEmpty(<div id="cart-item-div">Your bag is empty</div>);
             setCartTotal();
             setCartButton(<Link to={'/catalogue'} className="browse-product-button" onClick={() => setOpenCart(false)}>Browse Products</Link>);
         }

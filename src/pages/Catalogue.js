@@ -5,6 +5,7 @@ const Catalogue = (props) => {
     const { cartItems, setCartItems } = props;
 
     let addToCart = (item) => {
+        //Create new array with item and sort alphabetically
         let newCart = (cartItems.concat([item])).sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0)
         setCartItems(newCart);
     }
