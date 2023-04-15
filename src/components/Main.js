@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from '../pages/HomePage';
 import Catalogue from "../pages/Catalogue";
 
@@ -9,8 +9,9 @@ const Main = (props) => {
     return (
         <div className="main">
             <Routes>
-                <Route exact path='/' element={<Home />} />
+                <Route path='/' exact element={<Home />} />
                 <Route path='/catalogue'element={<Catalogue cartItems={cartItems} setCartItems={setCartItems} />} />
+                <Route path='/shopping-cart' element={<Navigate to='/' replace />}></Route>
             </Routes>
         </div>
     )
