@@ -1,8 +1,9 @@
 import React from "react";
 import ItemData from "../data/ItemData";
+import { useCartItemsContext } from "../components/CartItemsContext";
 
-const Catalogue = (props) => {
-    const { cartItems, setCartItems } = props;
+const Catalogue = () => {
+    const { cartItems, setCartItems } = useCartItemsContext();
 
     let addToCart = (item) => {
         //Create new array with item and sort alphabetically

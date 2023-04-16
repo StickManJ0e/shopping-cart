@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CartMenu from "./CartMenu";
 
-const Cart = (props) => {
+const Cart = () => {
     const [openCart, setOpenCart] = useState(false);
-    const { cartItems, setCartItems } = props;
 
     return (
         <div>
@@ -11,8 +10,6 @@ const Cart = (props) => {
             <CartMenu
                 openCart={openCart}
                 setOpenCart={setOpenCart}
-                cartItems={cartItems}
-                setCartItems={setCartItems}
             />
         </div>
     )

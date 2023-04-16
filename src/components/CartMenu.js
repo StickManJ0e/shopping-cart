@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import CartItemCards from "./CartItemCards";
 import { Link } from "react-router-dom";
+import { useCartItemsContext } from "./CartItemsContext";
 
 const CartMenu = (props) => {
-    const { openCart, setOpenCart, cartItems, setCartItems } = props;
+    const { openCart, setOpenCart } = props;
+    const { cartItems } = useCartItemsContext();
     const [cartTotal, setCartTotal] = useState();
     const [cartEmpty, setCartEmpty] = useState(<div id="cart-item-div">Your bag is empty</div>);
     const [cartButton, setCartButton] = useState(<div>Browse Products</div>);
@@ -23,10 +25,10 @@ const CartMenu = (props) => {
     //Only acts if detects changes to cartItems
     useEffect(() => {
         if (cartItems.length) {
-            setCartEmpty(<CartItemCards cartItems={cartItems} setCartItems={setCartItems} />);
+            setCartEmpty(<CartItemCards />);
 
             let total = cartItems.reduce((accumulator, current) => accumulator + parseFloat(current.price), 0);
-            setCartTotal(total);
+            setCartTotal(total.toFixed(2));
 
             setCartButton(<div className="checkout-button">Checkout</div>);
         }
@@ -34,10 +36,10 @@ const CartMenu = (props) => {
         else {
             setCartEmpty(<div id="cart-item-div">Your bag is empty</div>);
             setCartTotal();
-            setCartButton(<Link to={'/catalogue'} className="browse-product-button" onClick={() => setOpenCart(false)}>Browse Products</Link>);
+            setCartButton(<Link exact to={'/catalogue'} className="browse-product-button" onClick={() => setOpenCart(false)}>Browse Products</Link>);
         }
 
-    }, [cartItems])
+    }, [cartItems, setOpenCart])
 
     if (openCart === true) {
         return (

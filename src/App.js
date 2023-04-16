@@ -1,17 +1,18 @@
 import { BrowserRouter } from 'react-router-dom';
-import React, { useState, useContext, createContext } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
+import { CartItemsProvider } from './components/CartItemsContext';
 
 
 const App = () => {
-  const [cartItems, setCartItems] = useState([]);
-
   return (
-    <BrowserRouter>
-      <Header cartItems={cartItems} setCartItems={setCartItems} />
-      <Main cartItems={cartItems} setCartItems={setCartItems} />
-    </BrowserRouter>
+    <CartItemsProvider>
+      <BrowserRouter>
+        <Header />
+        <Main />
+      </BrowserRouter>
+    </CartItemsProvider>
   )
 }
 

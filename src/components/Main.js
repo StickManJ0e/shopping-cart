@@ -3,15 +3,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from '../pages/HomePage';
 import Catalogue from "../pages/Catalogue";
 
-const Main = (props) => {
-    const { cartItems, setCartItems } = props;
-
+const Main = () => {
     return (
         <div className="main">
             <Routes>
-                <Route path='/' exact element={<Home />} />
-                <Route path='/catalogue'element={<Catalogue cartItems={cartItems} setCartItems={setCartItems} />} />
-                <Route path='/shopping-cart' element={<Navigate to='/' replace />}></Route>
+                <Route exact path='/' element={<Home />} />
+                <Route exact path='/catalogue' element={<Catalogue />} />
+                <Route exact path='/shopping-cart' element={<Navigate to='/' replace />} />
             </Routes>
         </div>
     )

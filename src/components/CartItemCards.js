@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useCartItemsContext } from "./CartItemsContext";
 
 function setArray(array, setCartItems, setUniqueItems) {
     setCartItems(array);
     setUniqueItems(Array.from(new Set(array)));
 }
 
-const CartItemCards = (props) => {
-    const { cartItems, setCartItems } = props;
+const CartItemCards = () => {
+    const { cartItems, setCartItems } = useCartItemsContext();
     const [uniqueItems, setUniqueItems] = useState(Array.from(new Set(cartItems)));
 
     //To do: sort array by alphabet & total & checkout button
